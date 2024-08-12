@@ -1,113 +1,182 @@
-import Image from "next/image";
+"use client";
+import React, { useState, useEffect } from 'react';
+import './globals.css';
+import Fonts from '@/components/font';
 
-export default function Home() {
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = ['iphone15pmg.png', '3iphone15s.png'];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage === 0 ? 1 : 0));
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <html lang="en">
+      <head>
+        <Fonts/>
+        <title>Skeleton</title>
+      </head>
+      <body>
+        <div className="Navbar">
+          <a href="/">
+            <div className="navname">
+              <img src="Vector.png" alt="vector" />
+              <h1 className="topname">SKELETON</h1>
+            </div>
+          </a>  
+          <button className="download-app">Download App</button>
+        </div>
+        <main>
+          <div className="homepage">
+            <div className="home-img-container">
+              {images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`Slide ${index}`}
+                  className={`home-img ${currentImage === index ? 'active' : 'inactive'} ${index === 1 ? 'image-2' : ''}`}
+                />
+              ))}
+            </div>
+            <div className="clearfix">
+              <div className="whatisskeleton">
+                <h1>What is Skeleton?</h1>
+                <h3>Everyone has skeletons in their cupboard. This is where you reveal yours. Speak your truth, find your tribe, retain your privacy.<br/> Eager to get started?</h3>
+              </div>
+              <div className="stores">
+                <a href="https://www.google.com"><img src="playstore.png" alt='playstore' className="playstore"/></a>
+                <a href="https://www.google.com"><img src="appstore.png" alt='appstore' className="appstore"/></a>
+              </div>
+            </div>
+          </div>
+          <div className="need">
+          <div className="why-you-need">
+            <div className="first-half-left">
+              <div className="first-half-up">
+                <h3>Have you ever wanted to share an intrusive thought without fear or shame? Here you can and no one would ever know it was you.</h3>
+                <h2>Why you need Skeleton</h2>
+              </div>
+              <div className="first-half-down">
+                <h3>We want people to tell their stories, unburden their mind and find a community of people that they can be themselves with.</h3>
+                <h2>What we are doing with Skeleton?</h2>
+              </div>
+            </div>
+            <div className="second-half-phone">
+              <img src="2ndhalf.png" alt="2ndhalf"/>
+            </div>
+          </div>
+          </div>
+          <div className="new-world">
+            <div className="newhead1">
+            <h1 className="new-head">Welcome to a whole new world.</h1>
+            </div>
+            <div className="cards">
+              <div className="card1-2">
+                <div className="card1">
+                  <div className="card1text">
+                    <h2>Be completely anonymous</h2>
+                    <h4>No profiles, no photos, just real conversations!!!</h4>
+                  </div>
+                  <img src="card1img.png" alt="card1img" />
+                </div>
+                <div className="card2">
+                  <img src="card2img.png" alt="card2img" />
+                  <div className="card2text">
+                    <h2>Connect with your tribe</h2>
+                    <h4>Here you can say what you mean and vibe with people who think so too</h4>
+                  </div>
+                </div>
+              </div>
+              <div className="card3-4">
+                <div className="card3">
+                  <img src="card3img.png" alt="" />
+                  <div className="card3text">
+                    <h2>Find your perfect match</h2>
+                    <h4>Whatever you are looking for: fun, <span>love </span>or friendship. Match with someone that wants you too</h4>
+                  </div>
+                </div>
+                <div className="card4">
+                  <div className="card4text">
+                    <h2>Say it with your chest!!!</h2>
+                    <h4>Share your secrets, no matter how weird, raw or unfiltered.</h4>
+                  </div>
+                  <img src="card4img.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="closing">
+            <div className="closingcontent">
+              <div className="closingtext">
+                <h1>Connect with hundreds of people</h1>
+                <h4>Join Skeleton, where hundreds share your interests. Create your account today and find your perfect match!</h4>
+              </div>
+              <div className="closingdowload">
+                <a href="https://www.google.com"><img src="playstore.png" alt='playstore' className="playstore1"/></a>
+                <a href="https://www.appstore.com"><img src="appstore.png" alt='appstore' className="appstore2"/></a>
+              </div>
+            </div>
+            <div className="closingphoto">
+            <img src="closingphoto.png" alt="closingphoto"/>
+            </div>
+          </div>
+          <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-top">
+        <div className="logo-section">
+          <img src="logo.png" alt="Logo" />
+        </div>
+        <div className="links-section">
+          <div className="link-column1">
+            <p>About Us</p>
+            <p>FAQs</p>
+            <p>How it works?</p>
+          </div>
+          </div>
+          <div className="links-section2">
+          <div className="link-column2">
+            <p>Privacy Policy</p>
+            <p>Terms & Condition</p>
+            <p>Support</p>
+          </div>
+        </div>
+        <div className="subscribe-section">
+          <p>Subscribe to our Newsletter</p>
+          <div className="buttonsection">
+          <input type="email" placeholder="Enter your email address" className="newsletter" />
+          <button className="button-style">Subscribe</button>
+        </div>
+        </div>
+        </div>
+        <div className="footer-bottom">
+        <div className="social-section">
+          <p>Social Accounts</p>
+          <div className="social-icons">
+            <img src="whatsapp.png" alt="WhatsApp" width={50} height={50} className="s1"/>
+            <img src="facebook.png" alt="Facebook" width={50} height={50} className="s2"/>
+            <img src="instaimg.png" alt="Instagram" width={50} height={50} className="s3"/>
+            <img src="twitter.png" alt="Twitter" width={50} height={50}className="s4" />
+            <img src="telegram.png" alt="Telegram" width={50} height={50} className="s5"/>
+          </div>
+        </div>
+        <div className="download-section">
+          <p>Download Skeleton Now</p>
+          <div>
+            <img src="playstore.png" alt="Google Play" width={150} height={50} className="img1"/>
+            <img src="appstore.png" alt="App Store" width={150} height={50} className="img2"/>
+          </div>
+        </div>
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </footer>
+        </main>
+        {children}
+      </body>
+    </html>
   );
 }
