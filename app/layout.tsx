@@ -7,7 +7,7 @@ const layout = () => {
       <title>skeleton</title>
     </head>
     <body>      
-      <Children />
+      <Children children={undefined}/>
       
     </body>
   </html>
