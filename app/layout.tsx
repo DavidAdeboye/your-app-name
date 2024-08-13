@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './globals.css';
 import Fonts from '@/components/font';
+import Layout from './layout';
 
 function Layout({ children }: { children: React.ReactNode }) {
   const [currentImage, setCurrentImage] = useState(0);
