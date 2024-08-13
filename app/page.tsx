@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './globals.css';
 import Fonts from '@/components/font';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+function Layout({ children }: { children: React.ReactNode }) {
   const [currentImage, setCurrentImage] = useState(0);
   const images = ['iphone15pmg.png', '3iphone15s.png'];
 
@@ -180,3 +180,4 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     </html>
   );
 }
+export default Layout

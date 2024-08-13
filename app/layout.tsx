@@ -1,15 +1,17 @@
-
-import './globals.css';
-
-export default function Layout({ children }: { children: React.ReactNode }) {
+import React from 'react'
+import Children from './page'
+const layout = () => {
   return (
     <html lang="en">
-      <head>
-        <title>For Context</title>
-      </head>
-      <body>      
-        {children}
-      </body>
-    </html>
-  );
+    <head>
+      <title>skeleton</title>
+    </head>
+    <body>      
+      <Children children={undefined}/>
+      
+    </body>
+  </html>
+  )
 }
+
+export default layout
