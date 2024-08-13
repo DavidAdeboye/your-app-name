@@ -2,7 +2,7 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  overflow-x: hidden;
+  
   width: 100%; /* Adjusted to viewport height */
   background: #071932 url("../public/Group\ 27186.png") no-repeat center center fixed;
   background-size: cover;
