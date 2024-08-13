@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './globals.css';
 import Fonts from '@/components/font';
-import Layout from './layout';
+import Page from "./page";
 
 function Layout({ children }: { children: React.ReactNode }) {
   const [currentImage, setCurrentImage] = useState(0);
@@ -46,7 +46,7 @@ function Layout({ children }: { children: React.ReactNode }) {
             </div>
             {/* ... rest of the homepage content ... */}
           </div>
-          {children}
+          <Page/>
         </main>
       </body>
     </html>
